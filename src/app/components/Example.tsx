@@ -1,20 +1,13 @@
+import React from 'react';
+
 interface IExampleProps {
-  name: string;
-  isActive: boolean;
+  title: string;
 }
 
-export const Example = ({ name, isActive }: IExampleProps) => {
-  const greeting = 'Hello';
-  const message = `${greeting} ${name}`;
+const Example: React.FC<IExampleProps> = ({ title }): React.ReactElement => (
+  <div>
+    <h1>{title}</h1>
+  </div>
+);
 
-  if (isActive) {
-    console.warn(message);
-  }
-
-  return (
-    <div className='container'>
-      <span>{message}</span>
-      <br />
-    </div>
-  );
-};
+export default Example;
