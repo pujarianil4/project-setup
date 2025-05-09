@@ -14,6 +14,7 @@ export const Example = ({ name, isActive }: IExampleProps) => {
   return (
     <div className='container'>
       <span>{message}</span>
+
       <br />
     </div>
   );
