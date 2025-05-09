@@ -65,12 +65,12 @@ jobs:
           name: coverage
           path: coverage/
           retention-days: 15
+
   build:
     name: Build Next.js App
     runs-on: ubuntu-latest
     needs: test
-
-     steps:
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
