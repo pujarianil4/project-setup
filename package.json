@@ -14,11 +14,14 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
+      "eslint --fix --max-warnings=0",
       "prettier --write"
     ],
-    "*.{json,md}": [
+    "*.{json,md,css,scss}": [
       "prettier --write"
+    ],
+    "*.{ts,tsx}": [
+      "bash -c 'tsc-files --noEmit'"
     ]
   },
   "dependencies": {
@@ -41,6 +44,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
     "prettier": "^3.5.3",
+    "tsc-files": "^1.1.4",
     "typescript": "^5"
   }
 }
