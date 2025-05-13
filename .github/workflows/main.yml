@@ -100,10 +100,10 @@ jobs:
           retention-days: 1
 
   deploy:
-    name: Deploy to Netlify
+    name: Deploy to Netlify Production
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging'
+    if: github.ref == 'refs/heads/main' # Only deploy from main branch
     steps:
       - name: Download build output
         uses: actions/download-artifact@v4
@@ -111,10 +111,11 @@ jobs:
           name: nextjs-build
           path: .next
 
-      - name: Deploy to Netlify
+      - name: Deploy to Netlify Production
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_DEPLOY_MESSAGE: 'Production deployment from GitHub Actions'
         with:
-          args: deploy --dir=.next --prod
+          args: deploy --dir=.next --prod --message="Production deployment from GitHub Actions"
